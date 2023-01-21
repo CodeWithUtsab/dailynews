@@ -1,24 +1,124 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import { useState } from "react";
+import LoadingBar from "react-top-loading-bar";
+import News from "./components/News";
 
 function App() {
+  const pageSize = 6;
+  const apiKey = process.env.REACT_APP_NEWS_API;
+  const [progress, setProgress] = useState(0);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Navbar />
+      <LoadingBar color="#005abb" height={3} progress={progress} />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <News
+              setProgress={setProgress}
+              apiKey={apiKey}
+              key="general"
+              pageSize={pageSize}
+              country="in"
+              category="general"
+            />
+          }
+        />
+        <Route
+          path="/general"
+          element={
+            <News
+              setProgress={setProgress}
+              apiKey={apiKey}
+              key="general"
+              pageSize={pageSize}
+              country="in"
+              category="general"
+            />
+          }
+        />
+        <Route
+          path="/business"
+          element={
+            <News
+              setProgress={setProgress}
+              apiKey={apiKey}
+              key="business"
+              pageSize={pageSize}
+              country="in"
+              category="business"
+            />
+          }
+        />
+        <Route
+          path="/entertainment"
+          element={
+            <News
+              setProgress={setProgress}
+              apiKey={apiKey}
+              key="entertainment"
+              pageSize={pageSize}
+              country="in"
+              category="entertainment"
+            />
+          }
+        />
+        <Route
+          path="/sports"
+          element={
+            <News
+              setProgress={setProgress}
+              apiKey={apiKey}
+              key="sports"
+              pageSize={pageSize}
+              country="in"
+              category="sports"
+            />
+          }
+        />
+        <Route
+          path="/technology"
+          element={
+            <News
+              setProgress={setProgress}
+              apiKey={apiKey}
+              key="technology"
+              pageSize={pageSize}
+              country="in"
+              category="technology"
+            />
+          }
+        />
+        <Route
+          path="/health"
+          element={
+            <News
+              setProgress={setProgress}
+              apiKey={apiKey}
+              key="health"
+              pageSize={pageSize}
+              country="in"
+              category="health"
+            />
+          }
+        />
+        <Route
+          path="/politics"
+          element={
+            <News
+              setProgress={setProgress}
+              apiKey={apiKey}
+              key="politics"
+              pageSize={pageSize}
+              country="in"
+              category="politics"
+            />
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
